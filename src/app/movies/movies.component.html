@@ -1,0 +1,47 @@
+<ng-template [ngTemplateOutlet]="popularMoviesComponent"></ng-template>
+
+<div class="alert alert-warning" *ngIf="movies.length == 0 else moviesComponent">Movie not found.</div>
+
+
+<ng-template #moviesComponent>
+  <h4>{{movies.length}} movies found.</h4>
+
+  <div class="mb-3">
+    <input #searchInput [(ngModel)]="inputText"  type="text" class="form-control" placeholder="Search..." />
+    <small class="text-muted">{{inputText}}</small>
+  </div>
+
+  <div class="card mb-2" *ngFor="let movie of movies | filter: inputText">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="assets/img/{{movie.imageURL}}" class="img-fluid rounded-start"/>
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h2 class="card-title">{{movie.title}}</h2>
+          <p class="card-text">{{movie.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #popularMoviesComponent>
+  <h4>Popular Movies</h4>
+  <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+    <div class="col" *ngFor="let item of popularMovies">
+      <div class="card h-100">
+        <img src="/assets/img/{{item.imageURL}}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{item.title}}</h5>
+          <p class="card-text">{{item.description | summary  }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+
+
+
