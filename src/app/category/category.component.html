@@ -1,3 +1,4 @@
 <div class="list-group">
-  <a class="list-group-item list-group-item-action" *ngFor="let category of categories">{{category.name}}</a>
+  <a [class.active]="displayAll" (click)="onCategorySelected()" class="list-group-item list-group-item-action">Tüm Kategoriler</a>
+  <a [class.active]="!displayAll && category.id == selectedCategory.id" (click)="onCategorySelected(category)" class="list-group-item list-group-item-action" *ngFor="let category of categories">{{category.name}}</a>
 </div>
