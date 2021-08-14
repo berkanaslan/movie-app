@@ -4,14 +4,14 @@
 
 
 <ng-template #moviesComponent>
-  <h4>{{movies.length}} movies found.</h4>
+  <h4>{{filteredMovies.length}} movies found.</h4>
 
   <div class="mb-3">
-    <input #searchInput [(ngModel)]="inputText"  type="text" class="form-control" placeholder="Search..." />
+    <input #searchInput [(ngModel)]="inputText" (ngModelChange)="onInputChanged()" type="text" class="form-control" placeholder="Search..." />
     <small class="text-muted">{{inputText}}</small>
   </div>
 
-  <div class="card mb-2" *ngFor="let movie of movies | filter: inputText">
+  <div class="card mb-2" *ngFor="let movie of filteredMovies">
     <div class="row">
       <div class="col-md-3">
         <img src="assets/img/{{movie.imageURL}}" class="img-fluid rounded-start"/>

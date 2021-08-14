@@ -10,6 +10,7 @@ import {MovieRepository} from "../model/movie.repository";
 
 export class MoviesComponent implements OnInit {
   movies: Movie[] = []
+  filteredMovies: Movie[] = []
   popularMovies: Movie[] = [];
   movieRepository: MovieRepository;
 
@@ -18,9 +19,18 @@ export class MoviesComponent implements OnInit {
   constructor() {
     this.movieRepository = new MovieRepository();
     this.movies = this.movieRepository.getMovies();
+    this.filteredMovies = this.movies;
     this.popularMovies = this.movieRepository.getPopularMovies();
   }
 
   ngOnInit(): void {
+
+  }
+
+  onInputChanged() {
+    this.filteredMovies = this.inputText
+      ? this.filteredMovies
+        .filter(movie => movie.title.indexOf(this.inputText) !== -1 || movie.description.indexOf(this.inputText) !== -1)
+      : this.movies;
   }
 }
