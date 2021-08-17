@@ -12,6 +12,7 @@ import {SummaryPipe} from "./pipes/summary.pipe";
 import {FormsModule} from "@angular/forms";
 import {MovieFilterPipe} from "./pipes/movie.filter.pipe";
 import {AlertifyService} from "./services/alertify.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {AlertifyService} from "./services/alertify.service";
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     AlertifyService

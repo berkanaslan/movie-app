@@ -1,30 +1,30 @@
 import {Component, OnInit} from '@angular/core';
 import {Movie} from "../model/movie";
-import {MovieRepository} from "../model/movie.repository";
 import {AlertifyService} from "../services/alertify.service";
+import {MovieService} from "../services/movie.service";
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.css']
+  styleUrls: ['./movies.component.css'],
+  providers: [MovieService]
 })
 
 export class MoviesComponent implements OnInit {
-  movies: Movie[] = []
-  filteredMovies: Movie[] = []
+  movies: Movie[] = [];
+  filteredMovies: Movie[] = [];
   popularMovies: Movie[] = [];
-  movieRepository: MovieRepository;
 
   inputText: string = "";
 
-  constructor(private alertify: AlertifyService) {
-    this.movieRepository = new MovieRepository();
-    this.movies = this.movieRepository.getMovies();
-    this.filteredMovies = this.movies;
-    this.popularMovies = this.movieRepository.getPopularMovies();
+  constructor(private alertify: AlertifyService, private movieService: MovieService) {
   }
 
   ngOnInit(): void {
+    this.movieService.getAllMovies().subscribe(data => {
+      this.movies = data;
+      this.filteredMovies = this.movies;
+    });
 
   }
 
