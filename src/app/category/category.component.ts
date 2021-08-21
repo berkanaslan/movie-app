@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Category} from "../model/category";
-import {CategoryRepository} from "../model/category.repository";
 import {CategoryService} from "../services/category.service";
 
 @Component({
@@ -16,13 +15,14 @@ export class CategoryComponent implements OnInit {
   categories: Category[];
   displayAll: boolean = true;
   selectedCategory: Category = null;
+  serviceError: any;
 
   constructor(private categoryService: CategoryService) {
     this.getAllCategories();
   }
 
   public getAllCategories() {
-    this.categoryService.getAllCategories().subscribe(data => this.categories = data);
+    this.categoryService.getAllCategories().subscribe(data => this.categories = data, error => this.serviceError = error);
   }
 
   ngOnInit(): void {

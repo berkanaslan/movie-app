@@ -1,13 +1,15 @@
-<ng-template [ngTemplateOutlet]="popularMoviesComponent"></ng-template>
+<ng-container *ngIf="popularMovies.length == 0 else popularMoviesComponent"></ng-container>
 
-<div class="alert alert-warning" *ngIf="movies.length == 0 else moviesComponent">Movie not found.</div>
+<div class="alert alert-danger" *ngIf="serviceError">{{serviceError}}</div>
 
+<div class="alert alert-warning" *ngIf="movies.length == 0 else moviesComponent">Movies not found.</div>
 
 <ng-template #moviesComponent>
   <h4>{{filteredMovies.length}} movies found.</h4>
 
   <div class="mb-3">
-    <input #searchInput [(ngModel)]="inputText" (ngModelChange)="onInputChanged()" type="text" class="form-control"
+    <input [(ngModel)]="inputText" (ngModelChange)="onInputChanged()"
+           type="text" class="form-control"
            placeholder="Search..."/>
     <small class="text-muted">{{inputText}}</small>
   </div>

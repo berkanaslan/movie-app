@@ -45,6 +45,11 @@
     {
       "id": 3,
       "name": "Sitcom"
+    },
+    {
+      "id": 4,
+      "name": "Life"
     }
+
   ]
 }
