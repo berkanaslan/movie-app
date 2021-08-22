@@ -1,7 +1,9 @@
 # MovieApp
 
-Run project: ng serve -o
-Run api:  json-server --watch db.json
+## Run project:
+ng serve -o
+## Run api:
+json-server --watch db.json
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
 
