@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Movie} from "../model/movie";
 import {AlertifyService} from "../services/alertify.service";
 import {MovieService} from "../services/movie.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-movies',
@@ -17,14 +18,19 @@ export class MoviesComponent implements OnInit {
   inputText: string = "";
   serviceError: any;
 
-  constructor(private alertify: AlertifyService, private movieService: MovieService) {
+
+  constructor(private alertify: AlertifyService,
+              private movieService: MovieService,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.movieService.getAllMovies().subscribe(data => {
-      this.movies = data;
-      this.filteredMovies = this.movies;
-    }, error => this.serviceError = error);
+    this.activatedRoute.params.subscribe(params => {
+      this.movieService.getAllMoviesByCategories(params["categoryId"]).subscribe(data => {
+        this.movies = data;
+        this.filteredMovies = this.movies;
+      }, error => this.serviceError = error)
+    });
   }
 
   onInputChanged() {
@@ -47,5 +53,4 @@ export class MoviesComponent implements OnInit {
       this.alertify.error(movie.title + " removed from list.");
     }
   }
-
 }
