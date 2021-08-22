@@ -2,30 +2,30 @@
   "movies": [
     {
       "id": 0,
-      "title": "Movie 1",
-      "description": "Suns resist from shields like photonic creatures. Suns resist from shields like photonic creatures.",
-      "imageURL": "1.jpeg",
+      "title": "Venom",
+      "description": "Venom is a 2018 American superhero film featuring the Marvel Comics character of the same name, produced by Columbia Pictures in association with Marvel[5] and Tencent Pictures. Distributed by Sony Pictures Releasing, it is the first film in the Sony Pictures Universe of Marvel Characters. Directed by Ruben Fleischer from a screenplay by Jeff Pinkner, Scott Rosenberg, and Kelly Marcel, it stars Tom Hardy as Eddie Brock / Venom, alongside Michelle Williams, Riz Ahmed, Scott Haze, and Reid Scott. In Venom, journalist Brock gains superpowers after becoming the host of an alien symbiote whose species plans to invade Earth.",
+      "imageURL": "venom.jpg",
       "isPopular": false,
       "categoryId": 1
     },
     {
-      "id": 0,
-      "title": "Movie 2",
-      "description": "Suns resist from shields like photonic creatures. Suns resist from shields like photonic creatures.",
-      "imageURL": "2.jpeg",
+      "id": 1,
+      "title": "Five Feet Apart",
+      "description": "Five Feet Apart is a 2019 American romantic drama film directed by Justin Baldoni (in his directorial debut)[5] and written by Mikki Daughtry and Tobias Iaconis. The film was inspired by Claire Wineland, who suffered from cystic fibrosis.[6] Haley Lu Richardson and Cole Sprouse play two young patients with cystic fibrosis, who try to have a relationship despite always being forced to stay a certain distance (6 ft) away from each other. It was released in the United States on March 15, 2019 by CBS Films via Lionsgate.[1] The film received mixed reviews from critics and has grossed over $91 million worldwide.",
+      "imageURL": "2.jpg",
       "isPopular": false,
       "categoryId": 2
     },
     {
-      "id": 0,
-      "title": "Movie 3",
-      "description": "Suns resist from shields like photonic creatures. Suns resist from shields like photonic creatures.",
-      "imageURL": "3.jpeg",
+      "id": 2,
+      "title": "1917",
+      "description": "April 1917, the Western Front. Two British soldiers are sent to deliver an urgent message to an isolated regiment. If the message is not received in time the regiment will walk into a trap and be massacred. To get to the regiment they will need to cross through enemy territory. Time is of the essence and the journey will be fraught with danger.",
+      "imageURL": "1917.jpg",
       "isPopular": false,
       "categoryId": 4
     },
     {
-      "id": 0,
+      "id": 3,
       "title": "Movie 4",
       "description": "Suns resist from shields like photonic creatures. Suns resist from shields like photonic creatures.",
       "imageURL": "4.jpeg",

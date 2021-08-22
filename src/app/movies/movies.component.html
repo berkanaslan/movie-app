@@ -17,14 +17,14 @@
   <div class="card mb-2" *ngFor="let movie of filteredMovies">
     <div class="row">
       <div class="col-md-3">
-        <img src="assets/img/{{movie.imageURL}}" class="img-fluid rounded-start"/>
+        <img src="assets/img/{{movie.imageURL}}" class="img-fit rounded-start"/>
       </div>
       <div class="col-md-9">
         <div class="card-body">
           <h2 class="card-title">{{movie.title}}</h2>
-          <p class="card-text">{{movie.description}}</p>
+          <p class="card-text">{{movie.description | summary}}</p>
           <div>
-            <button class="btn btn-outline-secondary">Details</button>
+            <a routerLink="/movies/{{movie.id}}" class="btn btn-outline-secondary">Details</a>
             <button class="btn btn-primary m-2" (click)="onAddToListClicked($event, movie)">Add to list</button>
           </div>
         </div>
