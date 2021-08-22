@@ -1,1 +1,23 @@
-<p>movie-details works!</p>
+<ng-template [ngTemplateOutlet]="serviceAlert" *ngIf="serviceError != null else movieDetail"></ng-template>
+
+<ng-template #serviceAlert>
+  <div class="alert alert-danger">{{serviceError}}</div>
+</ng-template>
+
+<ng-template #movieDetail>
+  <div *ngIf="movie">
+    <div class="card">
+      <div class="row">
+        <div class="col-md-4 ">
+          <img class="img-fit rounded-start" src="assets/img/{{movie.imageURL}}"/>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h2 class="card-title">{{movie.title}}</h2>
+            <p class="card-text">{{movie.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

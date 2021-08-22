@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {Category} from "../model/category";
-import {catchError, tap} from "rxjs/operators";
+import {catchError} from "rxjs/operators";
 
 @Injectable()
 export class CategoryService {
@@ -13,7 +13,7 @@ export class CategoryService {
 
   getAllCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.url).pipe(
-      tap(data => console.log(data)),
+      // tap(data => console.log(data)),
       catchError(CategoryService.handleError))
   }
 

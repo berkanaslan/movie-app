@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {Movie} from "../model/movie";
-import {catchError, tap} from "rxjs/operators";
+import {catchError} from "rxjs/operators";
 
 @Injectable()
 export class MovieService {
@@ -14,7 +14,7 @@ export class MovieService {
   getAllMovies(): Observable<Movie[]> {
     return this.http.get<Movie[]>(this.url).pipe(
       // Pipe serve us handle data before subscription.
-      tap(data => console.log(data)),
+      // tap(data => console.log(data)),
       catchError(MovieService.handleError),
     );
   }
@@ -29,9 +29,13 @@ export class MovieService {
     url += "?categoryId=" + categoryId;
 
     return this.http.get<Movie[]>(url).pipe(
-      tap(data => console.log(data)),
+      //  tap(data => console.log(data)),
       catchError(MovieService.handleError),
     );
+  }
+
+  getMovieById(id: number): Observable<Movie> {
+    return this.http.get<Movie>(this.url + "/" + id).pipe(catchError(MovieService.handleError));
   }
 
   private static handleError(error: HttpErrorResponse) {

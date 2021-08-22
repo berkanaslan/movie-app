@@ -7,7 +7,7 @@ export class SummaryPipe implements PipeTransform {
       return null;
     }
 
-    limit ??= 49;
+    limit ??= 50;
 
     if (limit >= value.length) {
       return value;
