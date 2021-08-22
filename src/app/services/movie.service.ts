@@ -6,7 +6,7 @@ import {catchError, tap} from "rxjs/operators";
 
 @Injectable()
 export class MovieService {
-  url: string = "http://localhost:3000/movies1";
+  url: string = "http://localhost:3000/movies";
 
   constructor(private http: HttpClient) {
   }
@@ -14,6 +14,21 @@ export class MovieService {
   getAllMovies(): Observable<Movie[]> {
     return this.http.get<Movie[]>(this.url).pipe(
       // Pipe serve us handle data before subscription.
+      tap(data => console.log(data)),
+      catchError(MovieService.handleError),
+    );
+  }
+
+  getAllMoviesByCategories(categoryId: number): Observable<Movie[]> {
+    if (categoryId == null) {
+      return this.getAllMovies();
+    }
+
+    let url = this.url;
+
+    url += "?categoryId=" + categoryId;
+
+    return this.http.get<Movie[]>(url).pipe(
       tap(data => console.log(data)),
       catchError(MovieService.handleError),
     );
