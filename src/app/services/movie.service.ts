@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {Movie} from "../model/movie";
 import {catchError} from "rxjs/operators";
@@ -32,6 +32,16 @@ export class MovieService {
       //  tap(data => console.log(data)),
       catchError(MovieService.handleError),
     );
+  }
+
+  save(movie: Movie): Observable<Movie> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
+
+    return this.http.post<Movie>(this.url, movie, httpOptions).pipe(catchError(MovieService.handleError));
   }
 
   getMovieById(id: number): Observable<Movie> {
