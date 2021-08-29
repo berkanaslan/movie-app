@@ -31,6 +31,14 @@
       "imageURL": "4.jpeg",
       "isPopular": false,
       "categoryId": 4
+    },
+    {
+      "id": 4,
+      "title": "Title",
+      "description": "Description",
+      "imageURL": "1.jpeg",
+      "categoryId": "0",
+      "isPopular": false
     }
   ],
   "categories": [
@@ -54,6 +62,5 @@
       "id": 4,
       "name": "Life"
     }
-
   ]
 }
