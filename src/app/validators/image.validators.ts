@@ -5,7 +5,7 @@ export class ImageValidator {
     const value = control.value as String;
 
     if (value.endsWith(".jpg") || value.endsWith(".jpeg") || value.endsWith(".png")) {
-      return null;
+      return {wrongExtension: false};
     }
 
     return {wrongExtension: true};
