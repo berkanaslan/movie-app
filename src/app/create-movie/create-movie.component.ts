@@ -3,8 +3,9 @@ import {CategoryService} from "../services/category.service";
 import {Category} from "../model/category";
 import {MovieService} from "../services/movie.service";
 import {Router} from "@angular/router";
-import {FormControl, FormGroup, NgForm} from "@angular/forms";
+import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {Movie} from "../model/movie";
+import {ImageValidator} from "../validators/image.validators";
 
 @Component({
   selector: 'app-create-movie',
@@ -16,10 +17,10 @@ export class CreateMovieComponent implements OnInit {
   categories: Category[];
 
   movieForm: FormGroup = new FormGroup({
-    titleController: new FormControl("Title"),
-    descriptionController: new FormControl("Description"),
-    imageURLController: new FormControl("1.jpeg"),
-    categoryIdController: new FormControl("0"),
+    titleController: new FormControl("Title", [Validators.required, Validators.minLength(5)]),
+    descriptionController: new FormControl("Description", [Validators.required, Validators.minLength(20)]),
+    imageURLController: new FormControl("1.jpeg", [ImageValidator.isValid]),
+    categoryIdController: new FormControl("0", [Validators.required]),
   });
 
 
@@ -43,5 +44,15 @@ export class CreateMovieComponent implements OnInit {
     };
 
     this.movieService.save(movie).subscribe(value => this.router.navigate(["/movies", value.id]));
+  }
+
+  clear() {
+    this.movieForm.patchValue({
+        titleController: "",
+        descriptionController: "",
+        imageURLController: "",
+        categoryIdController: "",
+      }
+    );
   }
 }
