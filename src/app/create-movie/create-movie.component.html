@@ -1,27 +1,34 @@
 <h3>Add Movie</h3>
-<form>
+<form [formGroup]="movieForm" (ngSubmit)="onSaveButtonPressed()">
   <div class="mb-3">
     <label for="title" class="form-label">Title</label>
-    <input type="text" class="form-control"/>
+    <input name="title" type="text" class="form-control"
+           formControlName="titleController"/>
   </div>
 
   <div class="mb-3">
     <label for="description" class="form-label">Decription</label>
-    <textarea class="form-control"></textarea>
+    <textarea name="description" class="form-control"
+              formControlName="descriptionController">
+    </textarea>
   </div>
 
   <div class="mb-3">
     <label for="imageURL" class="form-label">Image URL</label>
-    <input type="text" class="form-control"/>
+    <input name="imageURL" type="text" class="form-control"
+           formControlName="imageURLController"/>
   </div>
 
   <div class="mb-3">
     <label for="categoryId" class="form-label">Category</label>
-    <select class="form-select">
-      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+    <select name="categoryId" class="form-select"
+            formControlName="categoryIdController">
+      <option
+        *ngFor="let category of categories"
+        [value]="category.id">{{category.name}}</option>
     </select>
   </div>
 
-  <button class="btn btn-primary" (click)="onSaveButtonPressed()">Save</button>
+  <button type="submit" class="btn btn-primary">Save</button>
 
 </form>
