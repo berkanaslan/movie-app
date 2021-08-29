@@ -17,6 +17,7 @@
     <label for="imageURL" class="form-label">Image URL</label>
     <input name="imageURL" type="text" class="form-control"
            formControlName="imageURLController"/>
+    <div *ngIf="movieForm.get('imageURLController').errors.wrongExtension">Hello!</div>
   </div>
 
   <div class="mb-3">
