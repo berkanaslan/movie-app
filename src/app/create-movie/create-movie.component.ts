@@ -43,7 +43,7 @@ export class CreateMovieComponent implements OnInit {
       isPopular: false,
     };
 
-    this.movieService.save(movie).subscribe(value => this.router.navigate(["/movies", value.id]));
+    this.movieService.save(movie).subscribe(value => this.router.navigate(["/movies", value]));
   }
 
   clear() {

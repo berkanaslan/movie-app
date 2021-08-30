@@ -2,7 +2,12 @@
 
 <div class="alert alert-danger" *ngIf="serviceError">{{serviceError}}</div>
 
-<div class="alert alert-warning" *ngIf="movies.length == 0 else moviesComponent">Movies not found.</div>
+<ng-container *ngIf="!loading">
+  <div class="alert alert-warning" *ngIf="movies.length == 0 else moviesComponent">Movies not found.</div>
+</ng-container>
+
+
+<div class="spinner-border text-primary" role="status" *ngIf="loading"></div>
 
 <ng-template #moviesComponent>
   <h4>{{filteredMovies.length}} movies found.</h4>

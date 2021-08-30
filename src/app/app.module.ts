@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import { CreateMovieComponent } from './create-movie/create-movie.component';
 import { FormAlertDivComponent } from './form-alert-div/form-alert-div.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormAlertDivComponent } from './form-alert-div/form-alert-div.component
     SummaryPipe,
     MovieFilterPipe,
     CreateMovieComponent,
-    FormAlertDivComponent
+    FormAlertDivComponent,
+    AddCategoryComponent
   ],
     imports: [
         BrowserModule,
