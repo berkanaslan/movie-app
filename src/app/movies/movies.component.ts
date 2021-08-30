@@ -17,7 +17,7 @@ export class MoviesComponent implements OnInit {
   popularMovies: Movie[] = [];
   inputText: string = "";
   serviceError: any;
-
+  loading: boolean = false;
 
   constructor(private alertify: AlertifyService,
               private movieService: MovieService,
@@ -25,13 +25,19 @@ export class MoviesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.activatedRoute.params.subscribe(params => {
       this.movieService.getAllMoviesByCategories(params["categoryId"]).subscribe(data => {
         this.movies = data;
         this.filteredMovies = this.movies;
-      }, error => this.serviceError = error)
+        this.loading = false;
+      }, error => {
+        this.serviceError = error;
+        this.loading = false
+      })
     });
   }
+
 
   onInputChanged() {
     this.filteredMovies = this.inputText
@@ -40,7 +46,12 @@ export class MoviesComponent implements OnInit {
       : this.movies;
   }
 
-  onAddToListClicked($event: any, movie: Movie) {
+  onAddToListClicked($event
+                       :
+                       any, movie
+                       :
+                       Movie
+  ) {
     if ($event.target.classList.contains("btn-primary")) {
       $event.target.classList.remove("btn-primary");
       $event.target.classList.add("btn-danger");
