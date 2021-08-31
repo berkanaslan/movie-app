@@ -14,7 +14,6 @@ export class MovieService {
   getAllMovies(): Observable<Movie[]> {
     return this.http.get<Movie[]>(this.url + ".json").pipe(
       // Pipe serve us handle data before subscription.
-      delay(4000),
       tap(data => console.log(data)),
       map(data => {
         const movies: Movie[] = [];
