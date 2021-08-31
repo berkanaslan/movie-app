@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup">
+  <div class="mb-3">
+    <label for="email" class="form-label">E-Mail</label>
+    <input type="text" name="email" id="email" class="form-control" formControlName="emailController"/>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" name="password" id="password" class="form-control" formControlName="passwordController"/>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="onLoginButtonPressed()">{{isLoginMode ? "Login" : "Register" }}</button>
+  <div>
+    <label>
+      <input type="checkbox" data-toggle="toggle" (click)="onToggleChanged()">
+      {{isLoginMode ? "Toggle to Register" : "Toggle to Login"}}
+    </label>
+  </div>
+</form>

@@ -46,12 +46,7 @@ export class MoviesComponent implements OnInit {
       : this.movies;
   }
 
-  onAddToListClicked($event
-                       :
-                       any, movie
-                       :
-                       Movie
-  ) {
+  onAddToListClicked($event: any, movie: Movie) {
     if ($event.target.classList.contains("btn-primary")) {
       $event.target.classList.remove("btn-primary");
       $event.target.classList.add("btn-danger");

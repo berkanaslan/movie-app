@@ -4,6 +4,7 @@ import {MoviesComponent} from "./movies/movies.component";
 import {MovieDetailsComponent} from "./movie-details/movie-details.component";
 import {CreateMovieComponent} from "./create-movie/create-movie.component";
 import {AddCategoryComponent} from "./add-category/add-category.component";
+import {AuthComponent} from "./auth/auth.component";
 
 const routes: Routes = [
   {path: "", redirectTo: "movies", pathMatch: "full"},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: "movies/category/:categoryId", component: MoviesComponent},
   {path: "movies/:movieId", component: MovieDetailsComponent},
   {path: "category/add", component: AddCategoryComponent},
+  {path: "auth", component: AuthComponent},
 ];
 
 @NgModule({

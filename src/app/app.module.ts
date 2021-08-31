@@ -16,6 +16,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import { CreateMovieComponent } from './create-movie/create-movie.component';
 import { FormAlertDivComponent } from './form-alert-div/form-alert-div.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AddCategoryComponent } from './add-category/add-category.component';
     MovieFilterPipe,
     CreateMovieComponent,
     FormAlertDivComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    AuthComponent
   ],
     imports: [
         BrowserModule,
