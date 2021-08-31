@@ -1,3 +1,5 @@
+<div class="spinner-border text-primary" role="status" *ngIf="isLoading"></div>
+
 <form [formGroup]="formGroup">
   <div class="mb-3">
     <label for="email" class="form-label">E-Mail</label>
@@ -7,7 +9,12 @@
     <label for="password" class="form-label">Password</label>
     <input type="password" name="password" id="password" class="form-control" formControlName="passwordController"/>
   </div>
-  <button type="submit" class="btn btn-primary" (click)="onLoginButtonPressed()">{{isLoginMode ? "Login" : "Register" }}</button>
+
+
+  <button type="submit" class="btn btn-primary"
+          (click)="onLoginButtonPressed()">{{isLoginMode ? "Login" : "Register" }}
+  </button>
+
   <div>
     <label>
       <input type="checkbox" data-toggle="toggle" (click)="onToggleChanged()">
