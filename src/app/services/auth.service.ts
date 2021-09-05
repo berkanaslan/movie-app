@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {RegisterDTO} from "../model/registerDTO";
 import {User} from "../model/user";
 
@@ -32,4 +32,5 @@ export class AuthService {
 
     return this.http.post<User>(this.signUpURL, registerDTO);
   }
+
 }

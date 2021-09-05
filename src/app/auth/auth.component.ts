@@ -3,51 +3,59 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {Observable} from "rxjs";
 import {User} from "../model/user";
-import {finalize} from "rxjs/operators";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
-    selector: 'app-auth',
-    templateUrl: './auth.component.html',
-    styleUrls: ['./auth.component.css'],
-    providers: [AuthService]
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css'],
+  providers: [AuthService]
 })
 export class AuthComponent implements OnInit {
-    isLoginMode: boolean = false;
+  isLoginMode: boolean = false;
 
-    formGroup: FormGroup = new FormGroup({
-        emailController: new FormControl("", [Validators.required, Validators.email]),
-        passwordController: new FormControl("", [Validators.required])
-    });
+  formGroup: FormGroup = new FormGroup({
+    emailController: new FormControl("", [Validators.required, Validators.email]),
+    passwordController: new FormControl("", [Validators.required])
+  });
 
-    authResponse: Observable<User>;
+  authResponse: Observable<User>;
 
-    isLoading: boolean = false;
+  isLoading: boolean = false;
+  errorMessage: string;
 
-    constructor(private authService: AuthService) {
+  constructor(private authService: AuthService) {
+  }
+
+  ngOnInit(): void {
+  }
+
+  onToggleChanged() {
+    this.isLoginMode = !this.isLoginMode;
+  }
+
+  onLoginButtonPressed() {
+    if (this.formGroup.invalid) {
+      return;
     }
 
-    ngOnInit(): void {
+    this.errorMessage = null;
+
+    this.isLoading = true;
+    if (this.isLoginMode) {
+      this.authResponse = this.authService.signIn(this.formGroup.value.emailController, this.formGroup.value.passwordController);
+    } else {
+      this.authResponse = this.authService.signUp(this.formGroup.value.emailController, this.formGroup.value.passwordController);
     }
 
-    onToggleChanged() {
-        this.isLoginMode = !this.isLoginMode;
-    }
+    console.log(this.authResponse.subscribe(value => {
+      console.log(value);
+      this.isLoading = false;
+    }, error => {
+      this.errorMessage = error;
+      this.isLoading = false;
+    }));
 
-    onLoginButtonPressed() {
-        if (this.formGroup.invalid) {
-            return;
-        }
-
-        this.isLoading = true;
-        if (this.isLoginMode) {
-            this.authResponse = this.authService.signIn(this.formGroup.value.emailController, this.formGroup.value.passwordController);
-        } else {
-            this.authResponse = this.authService.signUp(this.formGroup.value.emailController, this.formGroup.value.passwordController);
-        }
-
-        console.log(this.authResponse.subscribe(value => {
-            console.log(value);
-            this.isLoading = false;
-        }, error => this.isLoading = false));
-    }
+    this.formGroup.reset();
+  }
 }

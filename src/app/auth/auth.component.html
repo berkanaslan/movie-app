@@ -1,5 +1,7 @@
 <div class="spinner-border text-primary" role="status" *ngIf="isLoading"></div>
 
+<div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+
 <form [formGroup]="formGroup">
   <div class="mb-3">
     <label for="email" class="form-label">E-Mail</label>
